@@ -3,6 +3,8 @@ local opts = { noremap = true, silent = true }
 
 keymap.set("n", "x", '"_x')
 
+keymap.set("i", "jj", "<Esc>", opts)
+
 keymap.set({"n", "v"}, "H", "^")
 keymap.set({"n", "v"}, "L", "$")
 keymap.set({"n", "v"}, "K", ":m+1<CR>")
