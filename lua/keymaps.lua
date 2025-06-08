@@ -7,12 +7,13 @@ keymap.set("i", "jj", "<Esc>", opts)
 
 keymap.set({"n", "v"}, "H", "^")
 keymap.set({"n", "v"}, "L", "$")
-keymap.set({"n", "v"}, "K", ":m+1<CR>")
-keymap.set({"n", "v"}, "J", ":m-1<CR>")
+keymap.set({"n", "v"}, "K", ":m -2<CR>")
+keymap.set({"n", "v"}, "J", ":m +1<CR>")
 
 -- Increment/decrement
 keymap.set("n", "+", "<C-a>")
 keymap.set("n", "-", "<C-x>")
+keymap.set("n", "--", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- Select all
 keymap.set("n", "<C-a>", "gg<S-v>G")
@@ -26,13 +27,16 @@ keymap.set("n", "<Leader>Q", ":qa<Return>", opts)
 keymap.set("n", "<Leader>f", ":NvimTreeFindFile<Return>", opts)
 keymap.set("n", "<Leader>t", ":NvimTreeToggle<Return>", opts)
 keymap.set("n", "<Leader>r", ":NvimTreeRefresh<Return>", opts)
+keymap.set("n", "<Leader>b", "<C-w>w", opts)
 
 
 -- Tabs
-keymap.set("n", "te", ":tabedit")
-keymap.set("n", "<tab>", ":tabnext<Return>", opts)
-keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
-keymap.set("n", "tw", ":tabclose<Return>", opts)
+keymap.set('n', '<Tab>', ':bnext<CR>', { desc = 'Next buffer' })
+keymap.set('n', '<S-Tab>', ':bprevious<CR>', { desc = 'Previous buffer' })
+-- keymap.set("n", "te", ":tabedit")
+-- keymap.set("n", "<tab>", ":tabnext<Return>", opts)
+-- keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
+-- keymap.set("n", "tw", ":tabclose<Return>", opts)
 
 -- Split window
 keymap.set("n", "ss", ":split<Return>", opts)
