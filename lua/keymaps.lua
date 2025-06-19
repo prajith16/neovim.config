@@ -3,12 +3,35 @@ local opts = { noremap = true, silent = true }
 
 keymap.set("n", "x", '"_x')
 
+-- Normal mode
+keymap.set('n', '<Up>', '<nop>', opts)
+keymap.set('n', '<Down>', '<nop>', opts)
+keymap.set('n', '<Left>', '<nop>', opts)
+keymap.set('n', '<Right>', '<nop>', opts)
+
+-- Insert mode
+keymap.set('i', '<Up>', '<nop>', opts)
+keymap.set('i', '<Down>', '<nop>', opts)
+keymap.set('i', '<Left>', '<nop>', opts)
+keymap.set('i', '<Right>', '<nop>', opts)
+
+-- Visual mode
+keymap.set('v', '<Up>', '<nop>', opts)
+keymap.set('v', '<Down>', '<nop>', opts)
+keymap.set('v', '<Left>', '<nop>', opts)
+keymap.set('v', '<Right>', '<nop>', opts)
+
 keymap.set("i", "jj", "<Esc>", opts)
 
 keymap.set({"n", "v"}, "H", "^")
 keymap.set({"n", "v"}, "L", "$")
-keymap.set({"n", "v"}, "K", ":m -2<CR>")
-keymap.set({"n", "v"}, "J", ":m +1<CR>")
+keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down" })
+keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
+keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
+keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+
+-- Delete without yanking
+keymap.set({ "n", "v" }, "<leader>d", '"_d', { desc = "Delete without yanking" })
 
 -- Increment/decrement
 keymap.set("n", "+", "<C-a>")
@@ -42,7 +65,7 @@ keymap.set('n', '<S-Tab>', ':bprevious<CR>', { desc = 'Previous buffer' })
 keymap.set("n", "ss", ":split<Return>", opts)
 keymap.set("n", "vv", ":vsplit<Return>", opts)
 
--- Move window
+-- -- Move window
 keymap.set("n", "sh", "<C-w>h")
 keymap.set("n", "sk", "<C-w>k")
 keymap.set("n", "sj", "<C-w>j")
@@ -58,3 +81,4 @@ keymap.set("n", "<C-S-j>", "<C-w>-")
 keymap.set("n", "<C-j>", function()
 	vim.diagnostic.goto_next()
 end, opts)
+
